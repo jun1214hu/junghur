@@ -1,12 +1,13 @@
-import Link from "next/link";
 import React, { useState } from "react";
-import Logo from "./Logo";
 import NavItem from "./NavItem";
-import "../styles/navbar.css"
+import styles from "./Navbar.module.css";
+
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
-  { text: "About Us", href: "/about" },
+  { text: "About", href: "/about" },
+  { text: "Resume", href: "/resume"},
+  { text: "Portfolio", href: "/portfolio"},
   { text: "Contact", href: "/contact" },
 ];
 const Navbar = () => {
@@ -14,14 +15,17 @@ const Navbar = () => {
   const [activeIdx, setActiveIdx] = useState(-1);
 
   return (
-    <header>
-      <nav className="navbar">
-      <div className="logo">
-      <Link href={"/"}>
-            <Logo />
-        </Link>
-      </div>
-        <div className={`${navActive ? "active" : ""} menu_list`}>
+    <div>
+      <nav className={styles.nav}>
+        <div
+          onClick={() => setNavActive(!navActive)}
+          className={styles.nav__menubar}
+        >
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className={`${navActive ? styles.active  : ""} ${styles.nav__menulist}`}>
           {MENU_LIST.map((menu, idx) => (
             <div
               onClick={() => {
@@ -29,14 +33,13 @@ const Navbar = () => {
                 setNavActive(false);
               }}
               key={menu.text}
-              className="menu_item"
             >
               <NavItem active={activeIdx === idx} {...menu} />
             </div>
           ))}
         </div>
       </nav>
-    </header>
+    </div>
   );
 };
 

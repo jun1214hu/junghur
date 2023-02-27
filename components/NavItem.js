@@ -1,18 +1,12 @@
-import Image from 'next/image'
+import Link from "next/link";
+import styles from "./Navbar.module.css";
 
-const NavItem = ({ text, href, logo }) => {
-    return (
-      <div>
-      <a className="contactBarLink" href={href} target="_blank"> {text} </a>
-      <Image
-        className="contactBarLogo"
-        src={logo}
-        alt=""
-        width={30}
-        height={30}
-      />
-      </div>
-    );
+const NavItem = ({ text, href, active }) => {
+  return (
+    <Link href={href} className={styles.nav__link}>
+       {text}
+    </Link>
+  );
 };
 
 export default NavItem;
