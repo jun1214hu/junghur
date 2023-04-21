@@ -1,13 +1,12 @@
-import Contactbar from "../components/Contactbar";
-import Navbar from "../components/Navbar";
+import Layout, { siteTitle } from '../components/layout'
 import '../styles/global.css'
 
+// this will load on ALL pages
+// layout, error boundary suspense, page
 export default function App({ Component, pageProps }) {
   return (
-      <>
-      <Contactbar />
-      <Navbar />
+    <Layout>
       <Component {...pageProps} />
-      </>
+    </Layout>
   );
 }
